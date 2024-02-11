@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "dd91a3f8-7acb-4ac8-b100-3227169861ab",
+		"name": "hilla_abra_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32902999"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:8000/messages/5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"sender\": {\r\n    \"username\": \"check\"\r\n  },\r\n  \"receiver\": {\r\n    \"username\": \"example\"\r\n  },\r\n  \"message\": \"12:59\",\r\n  \"subject\": \"12:59\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/messages/5",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"messages",
+						"5"
+					]
+				},
+				"description": "creating message"
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/messages/create/",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"sender\": {\r\n    \"username\": \"check\"\r\n  },\r\n  \"receiver\": {\r\n    \"username\": \"abra\"\r\n  },\r\n  \"message\": \"20:20\",\r\n  \"subject\": \"20:20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/messages/create/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"messages",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/messages/13/read/",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"sender\": {\r\n    \"username\": \"check\"\r\n  },\r\n  \"receiver\": {\r\n    \"username\": \"abra\"\r\n  },\r\n  \"message\": \"20:20\",\r\n  \"subject\": \"20:20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/messages/13/read/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"messages",
+						"13",
+						"read",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/messages/4/?is_read=False",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"sender\": {\r\n    \"username\": \"check\"\r\n  },\r\n  \"receiver\": {\r\n    \"username\": \"abra\"\r\n  },\r\n  \"message\": \"20:20\",\r\n  \"subject\": \"20:20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/messages/4/?is_read=False",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"messages",
+						"4",
+						""
+					],
+					"query": [
+						{
+							"key": "is_read",
+							"value": "False"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/messages/3/delete",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"sender\": {\r\n    \"username\": \"check\"\r\n  },\r\n  \"receiver\": {\r\n    \"username\": \"example\"\r\n  },\r\n  \"message\": \"12:59\",\r\n  \"subject\": \"12:59\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/messages/3/delete/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"messages",
+						"3",
+						"delete",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

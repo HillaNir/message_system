@@ -16,8 +16,11 @@ class MessageAll(APIView):
     def get(self, request, user_id):
         try:
             user = User.objects.get(id=user_id)
-            if request.query_params.get('is_read', None) == 'True':
-                messages = Message.objects.filter(receiver=user, is_read=True)
+            is_read_value = None
+            is_read_param = request.query_params.get('is_read', None)
+            if is_read_param is not None:
+                is_read_value = is_read_param.lower() == 'true'
+                messages = Message.objects.filter(receiver=user.id, is_read=is_read_value)
             else:
                 messages = Message.objects.filter(Q(sender=user) | Q(receiver=user))
             serializer = MessageSerializer(messages, many=True)
