@@ -13,33 +13,19 @@ from api.models import *
 
 
 class MessageAll(APIView):
-    # authentication_classes = [TokenAuthentication]
-    # permission_classes = [IsAuthenticated]
-
     def get(self, request, user_id):
         try:
             user = User.objects.get(id=user_id)
-            # is_authenticated = request.user == user
-            
             if request.query_params.get('is_read', None) == 'True':
                 messages = Message.objects.filter(receiver=user, is_read=True)
             else:
                 messages = Message.objects.filter(Q(sender=user) | Q(receiver=user))
-
             serializer = MessageSerializer(messages, many=True)
             return Response(serializer.data)
-
         except User.DoesNotExist:
             return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
 
-
-
-    
-
 class MessageOne(APIView):
-    # authentication_classes = [TokenAuthentication]
-    # permission_classes = [IsAuthenticated]
-    
     def post(self,request):
         data = JSONParser().parse(request)
         sender = User.objects.get(username=data['sender']['username'])
@@ -67,52 +53,4 @@ class MessageOne(APIView):
             message.delete()
             return JsonResponse({'message':'message deleted successfully'})
         except:
-            return JsonResponse({'message':'message not found'}, status=status.HTTP_404_NOT_FOUND) 
-    
-
-
-# class MessageAll(APIView):
-#     authentication_classes = [TokenAuthentication]
-#     permission_classes = [IsAuthenticated]    
-#     def get_all_messages(self, request, user_id):
-#         try:
-#             user = User.objects.get(id=user_id)
-#             if user.is_authenticated():
-#                 user = request.user
-#                 messages = Message.objects.filter(Q(sender=user) | Q(receiver=user))
-#                 serializer = MessageSerializer(messages, many=True)
-#                 return Response(serializer.data)
-#             else:
-#                 return Response({'error': 'Authentication required'}, status=status.HTTP_401_UNAUTHORIZED)
-#         except:
-#             return JsonResponse({'message':'message not found'}, status=status.HTTP_404_NOT_FOUND)
-#     def get_unread_messages(self, request, user_id):
-#         try:
-#             user = User.objects.get(id=user_id)
-#             if user.is_authenticated():
-#                 user = request.user
-#                 messages = Message.objects.filter(receiver=user, is_read=False)
-#                 serializer = MessageSerializer(messages, many=True)
-#                 return Response(serializer.data)
-#             else:
-#                 return Response({'error': 'Authentication required'}, status=status.HTTP_401_UNAUTHORIZED)
-#         except:
-#             return JsonResponse({'message':'message not found'}, status=status.HTTP_404_NOT_FOUND)
-    
-
-# לבדוק שהפונקציות נכונות
-
-# from rest_framework import generics
-# from rest_framework.permissions import IsAuthenticated
-# from .models import Message
-# from .serializers import MessageSerializer
-
-# class MessageList(generics.ListCreateAPIView):
-#     queryset = Message.objects.all()
-#     serializer_class = MessageSerializer
-#     permission_classes = (IsAuthenticated,)  # Only authenticated users can access
-
-# class MessageDetail(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = Message.objects.all()
-#     serializer_class = MessageSerializer
-#     permission_classes = (IsAuthenticated,)
+            return JsonResponse({'message':'message not found'}, status=status.HTTP_404_NOT_FOUND)
