@@ -9,27 +9,3 @@ class Message(models.Model):
     subject = models.CharField(max_length=500)
     is_read = models.BooleanField(default=False)
     creation_date = models.DateTimeField(auto_now_add=True)
-
-
-# Superuser:
-# Username: hilla_nir
-# Email: hilla_nir@gmail.com
-# Password: hilla_abra
-    
-
-# {
-# "username" : "check",
-# "password" : "nothbook"
-# }
-
-
-# {
-#   "sender": {
-#     "username": "check"
-#   },
-#   "receiver": {
-#     "username": "example"
-#   },
-#   "message": "23:58",
-#   "subject": "23:58"
-# }
